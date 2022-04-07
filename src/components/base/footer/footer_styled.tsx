@@ -2,15 +2,12 @@ import styled, { css } from 'styled-components';
 
 const StyledFooter = styled.footer.attrs((props) => {})`
   ${(props) => {
-    const colorKeyBlue = props.theme.palette.$color_key_blue;
-    const colorKeyRed = props.theme.palette.$color_key_red;
-    const colorLineBlack = props.theme.palette.$color_line_black;
-    const colorBaseBlack = props.theme.palette.$color_base_black;
+    const $color_base_black = props.theme.palette.$color_base_black;
     return css`
       min-height: 150px;
       padding: 0 5%;
       box-shadow: 0 0 10px rgba(70, 70, 70, 0.3);
-      background-color: ${colorBaseBlack};
+      background-color: ${$color_base_black};
       color: #fff;
 
       display: flex;

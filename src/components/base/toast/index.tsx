@@ -8,7 +8,7 @@ import ToastComponent from './toast_component';
 import { initToast } from 'Actions/toastAction';
 
 export interface ToastPropsTypes {
-  is_pop: boolean;
+  isPop: boolean;
   status: 'default' | 'error' | 'success' | 'warning';
   message: string;
 }
@@ -21,8 +21,9 @@ const Toast: React.FC<any> = (props, {}) => {
   const toastProps = toast_state.toJS();
 
   const [initState, setInitState] = useState(false);
+
   useEffect(() => {
-    if (toastProps.is_pop === true && initState === false) {
+    if (toastProps.isPop === true && initState === false) {
       setInitState(true);
       setTimeout(() => {
         dispatch(initToast());

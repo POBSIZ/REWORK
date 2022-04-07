@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
@@ -12,18 +12,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // HOC
 
 import StyleLike from './like_styled';
 
-import { LikeParamsType } from '.';
+import { LikePropsType } from '.';
 
-const LikeComponent: React.FC<LikeParamsType> = (props) => {
+const LikeComponent: React.FC<LikePropsType> = (props) => {
   const [LikeState, setLikeState] = useState(
     props.isLike ? props.isLike : false,
   );
 
-  const handleLikeState = async () => {
+  const handleLikeState = useCallback(() => {
     LikeState ? setLikeState(false) : setLikeState(true);
     props.onClick ? null : props.onClick;
-    // console.log(`Like:${LikeState ? false : true}`);
-  };
+  }, [LikeState]);
 
   return (
     <>

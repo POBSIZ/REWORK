@@ -2,12 +2,12 @@ import { ActionType } from 'typesafe-actions';
 import toastAction, { toastConstants } from 'Actions/toastAction';
 
 export interface ToastReducerType {
-  is_pop: boolean;
+  isPop: boolean;
   status: 'default' | 'error' | 'success' | 'warning';
   message: string;
 }
 
-export interface PushToastParamType {
+export interface PushToastPropsType {
   status: 'default' | 'error' | 'success' | 'warning';
   message: string;
 }
@@ -16,4 +16,4 @@ export interface PayloadType {
   payload: ToastReducerType;
 }
 
-export type toastActionType = ActionType<typeof toastAction>;
+export type ToastActionType = ActionType<typeof toastAction>;

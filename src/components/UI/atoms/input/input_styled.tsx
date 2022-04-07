@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { GlobalStyleType } from 'StyleVars';
-import { InputParamsType } from '.';
+import { InputPropsType } from '.';
 
 const StyledInput = styled.input.attrs((props) => ({
   placeholder: props.placeholder || 'input',
@@ -8,16 +8,16 @@ const StyledInput = styled.input.attrs((props) => ({
   name: props.name || '',
   required: props.required || false,
   disabled: props.disabled || false,
-}))<InputParamsType>`
+}))<InputPropsType>`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
     const $color_disabled = Theme.palette.$color_disabled;
     const $color_key_color = Theme.palette.$color_key_color;
     const $color_base_black = Theme.palette.$color_base_black;
     const $color_base_line = Theme.palette.$color_base_line;
-    const bgColor = props.disabled === true ? colorLineBlack : 'transparent';
+    const bgColor = props.disabled === true ? $color_base_line : 'transparent';
     const borderColor =
-      props.isFail === true ? Theme.palette.$color_failure : colorLineBlack;
+      props.isFail === true ? Theme.palette.$color_failure : $color_base_line;
     return css`
       background-color: ${bgColor};
       color: ${$color_base_black};

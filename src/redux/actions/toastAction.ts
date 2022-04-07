@@ -3,7 +3,7 @@ import { AxiosError } from 'axios';
 
 import {
   ToastReducerType,
-  PushToastParamType,
+  PushToastPropsType,
 } from 'Types/toastTypes';
 import { ErrorInfo } from 'react';
 
@@ -15,7 +15,7 @@ export const pushToastAsync = createAsyncAction(
   PUSH_TOAST,
   PUSH_TOAST_SUCCESS,
   PUSH_TOAST_ERROR,
-)<any, PushToastParamType, any>();
+)<any, PushToastPropsType, any>();
 
 // INIT_TOAST Action
 export const INIT_TOAST = 'toast/INIT_TOAST' as const;

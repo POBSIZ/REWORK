@@ -12,10 +12,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // HOC
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 import StyledEditInput, { StyledEditInputWrapper } from './editInput_styled';
-import { EditInputProps } from '.';
+import { EditInputPropsType } from '.';
 
-const EditInputComponent: React.FC<EditInputProps> = (
-  props: EditInputProps,
+const EditInputComponent: React.FC<EditInputPropsType> = (
+  props: EditInputPropsType,
   {},
 ) => {
   const [currText, setCurrText] = useState('');

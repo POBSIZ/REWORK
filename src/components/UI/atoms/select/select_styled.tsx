@@ -1,33 +1,37 @@
 import styled, { css } from 'styled-components';
 import { GlobalStyleType } from 'StyleVars';
 
-import { SelectParamsType } from '.';
+import { SelectPropsType } from '.';
 
 const StyledSelect = styled.select.attrs((props) => ({
   defaultValue: 'none',
   name: props.name || '',
   disabled: props.disabled,
   required: props.required || false,
-}))<SelectParamsType>`
+}))<SelectPropsType>`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
 
-    const colorDisabled = Theme.palette.$color_disabled;
-    const colorD3Blue = Theme.palette.$color_d3_blue;
-    const colorBaseBlack = Theme.palette.$color_base_black;
-    const colorLineBlack = Theme.palette.$color_base_line;
+    const $color_key_color = Theme.palette.$color_key_color;
+    const $color_base_black = Theme.palette.$color_base_black;
+    const $color_base_line = Theme.palette.$color_base_line;
+    const $color_success = Theme.palette.$color_success;
+    const $color_failure = Theme.palette.$color_failure;
+    const $color_warning = Theme.palette.$color_warning;
+
     const borderColor =
       props.isFail === true
-        ? props.theme.palette.$color_failure
+        ? $color_failure
         : props.isSuccess === true
-        ? '#2ECC71'
+        ? $color_success
         : props.isWarning === true
-        ? '#F1C40F'
-        : colorLineBlack;
-    const bgColor = props.disabled === true ? colorLineBlack : 'transparent';
+        ? $color_warning
+        : $color_base_line;
+
+    const bgColor = props.disabled === true ? $color_base_line : 'transparent';
 
     return css`
-      color: ${colorBaseBlack};
+      color: ${$color_base_black};
       background-color: ${bgColor};
       width: 100%;
       height: 45px;
@@ -41,8 +45,8 @@ const StyledSelect = styled.select.attrs((props) => ({
       border-radius: 0px;
 
       &:focus {
-        border: 1px solid ${colorD3Blue};
-        color: ${colorBaseBlack};
+        border: 1px solid ${$color_key_color};
+        color: ${$color_base_black};
       }
 
       &:disabled {

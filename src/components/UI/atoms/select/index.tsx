@@ -6,7 +6,7 @@ import { useCookies } from 'react-cookie';
 
 import SelectComponent from './select_component';
 
-export interface SelectParamsType {
+export interface SelectPropsType {
   item: string[];
   placeholder: string;
   name?: string;
@@ -16,7 +16,7 @@ export interface SelectParamsType {
   isWarning?: boolean;
 }
 
-const Select: React.FC<SelectParamsType> = (
+const Select: React.FC<SelectPropsType> = (
   props,
   {
     item,
@@ -26,7 +26,7 @@ const Select: React.FC<SelectParamsType> = (
     required,
     isSuccess,
     isWarning,
-  }: SelectParamsType,
+  }: SelectPropsType,
 ) => {
   return (
     <>

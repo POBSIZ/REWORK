@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-export interface ModalPropType {
+export interface ModalPropsType {
   children?: ReactNode;
   visible: boolean;
   position?: 'top' | 'bottom';

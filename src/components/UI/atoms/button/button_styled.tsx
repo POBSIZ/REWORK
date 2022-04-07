@@ -1,33 +1,30 @@
 import styled, { css } from 'styled-components';
+import { GlobalStyleType } from 'StyleVars';
 
-import { ButtonParamsType } from '.';
+import { ButtonPropsType } from '.';
 
-const StyledButton = styled.button.attrs((props: ButtonParamsType) => ({
+const StyledButton = styled.button.attrs((props: ButtonPropsType) => ({
   disabled: props.isDisabled,
-}))<ButtonParamsType>`
+}))<ButtonPropsType>`
   ${(props) => {
-    const colorBaseBlack = props.theme.palette.$color_base_black;
-    const colorKeyGradient = props.theme.palette.$color_key_gradient;
-    const colorKeyBlue = props.theme.palette.$color_key_blue;
-    const colorKeyRed = props.theme.palette.$color_key_red;
+    const Theme: GlobalStyleType = props.theme;
+    const $color_base_black = Theme.palette.$color_base_black;
+    const $color_key_color = Theme.palette.$color_key_color;
+    const $color_failure = Theme.palette.$color_failure;
 
     const bgColor =
       props.backColor === 'primary'
-        ? `background-color: ${colorKeyBlue};`
-        : props.backColor === 'gradient'
-        ? `background-image: ${colorKeyGradient};`
+        ? `background-color: ${$color_key_color};`
         : props.backColor === 'black'
-        ? `background-color: ${colorBaseBlack};`
+        ? `background-color: ${$color_base_black};`
         : props.backColor === 'red'
-        ? `background-color: ${colorKeyRed};`
-        : `background-color: ${colorBaseBlack};`;
+        ? `background-color: ${$color_failure};`
+        : `background-color: ${$color_base_black};`;
 
     return css`
-      background: ${colorBaseBlack};
-      ${bgColor}
-      /* background-size: 0; */
+      background: ${$color_base_black};
+      ${bgColor};
       background-repeat: no-repeat;
-      /* color: ${colorBaseBlack}; */
       color: #fff;
       width: 100%;
       height: 45px;
@@ -38,11 +35,6 @@ const StyledButton = styled.button.attrs((props: ButtonParamsType) => ({
       outline: none;
       cursor: pointer;
       transition: all 0.3s;
-
-      /* &:hover {
-        background-size: 100%;
-        color: #fff;
-      } */
     `;
   }};
 `;

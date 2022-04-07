@@ -55,8 +55,7 @@ const Template: Story<any> = (args) => (
 export const Default = Template.bind({});
 Default.parameters = {};
 Default.args = {
-  is_pop: 'true',
-  // status: 'default' | 'error' | 'success' | 'warning',
+  isPop: 'true',
   status: 'default',
   message: 'TEST',
 };

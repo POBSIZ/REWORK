@@ -1,13 +1,12 @@
 import styled, { css } from 'styled-components';
-import { LikeParamsType } from '.';
+import { GlobalStyleType } from 'StyleVars';
 
 const StyledLike = styled.div.attrs((props) => ({}))<{ isLike: boolean }>`
   ${(props) => {
-    const colorBaseBlack = props.theme.palette.$color_base_black;
-    const colorKeyGradient = props.theme.palette.$color_key_gradient;
+    const Theme: GlobalStyleType = props.theme;
     const iconColor = props.isLike
-      ? props.theme.palette.$color_key_red
-      : props.theme.palette.$color_disabled;
+      ? Theme.palette.$color_failure
+      : Theme.palette.$color_disabled;
     return css`
       cursor: pointer;
       width: 100%;

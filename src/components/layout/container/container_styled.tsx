@@ -4,11 +4,11 @@ import { GlobalStyleType } from 'StyleVars';
 const StyledContainer = styled.div.attrs((props) => ({}))`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
-    const TabletMaxWidth = Theme.media.$tablet_max_width;
+    const $tablet_max_width = Theme.media.$tablet_max_width;
     return css`
       padding: 0 5%;
 
-      @media screen and (max-width: ${TabletMaxWidth}) {
+      @media screen and (max-width: ${$tablet_max_width}) {
         /* padding: 0 3%; */
       }
     `;

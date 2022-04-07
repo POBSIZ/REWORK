@@ -1,60 +1,64 @@
-import React, { useEffect, useState, useRef } from 'react';
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
-import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
-import Actions from 'Actions/index';
-import axios from 'axios';
-import { useCookies } from 'react-cookie';
+import React, { useState, useEffect } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import {} from '@fortawesome/free-brands-svg-icons'; // 브랜드 아이콘
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'; // fill 타입 아이콘
-import {} from '@fortawesome/free-regular-svg-icons'; // outline 타입 아이콘
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // HOC
 
+import { TextInputPropsType } from '.';
 import StyledTextInput from './textInput_styled';
 
 import Atoms, { Input, Select } from 'Atoms/index';
 
-const TextInputComponent: React.FC<any> = (props) => {
-  const item = ['남자', '여자'];
-  const TextInputType = {
+const TextInputComponent: React.FC<TextInputPropsType> = (
+  props: TextInputPropsType,
+) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
+  const [textInputType, setTextInputType] = useState({
     text: '아이디',
     type: 'username',
     name: ' username',
     placeholder: '아이디',
     warnning: '영문 및 숫자를 포함한 8자 이상이어야 합니다.',
-  };
+  });
+
+  const item = ['남자', '여자'];
   const text = {
     username: '아이디',
     password: '비밀번호',
-    password_check: '비밀번호 확인',
+    passwordCheck: '비밀번호 확인',
     email: '이메일',
   };
   const type = {
     username: 'username',
     password: 'password',
-    password_check: 'password',
+    passwordCheck: 'password',
     email: 'email',
   };
   const placeholder = {
     username: '아이디',
     password: '비밀번호',
-    password_check: '비밀번호 확인',
+    passwordCheck: '비밀번호 확인',
     email: 'e-mail',
   };
   const warnning = {
     username: '영문 및 숫자를 포함한 8자 이상이어야 합니다.',
     password: '영문 및 숫자를 포함한 8자 이상이어야 합니다.',
-    password_check: '영문 및 숫자를 포함한 8자 이상이어야 합니다.',
+    passwordCheck: '영문 및 숫자를 포함한 8자 이상이어야 합니다.',
     email: '이메일',
   };
   const select_default = '선택해주세요';
 
-  TextInputType.text = text[props.type];
-  TextInputType.type = type[props.type];
-  TextInputType.name = props.type;
-  TextInputType.placeholder = placeholder[props.type];
-  TextInputType.warnning = warnning[props.type];
+  useEffect(() => {
+    setTextInputType({
+      text: text[props.type],
+      type: type[props.type],
+      name: props.type,
+      placeholder: placeholder[props.type],
+      warnning: warnning[props.type],
+    });
+    return () => {};
+  }, []);
 
   return (
     <>
@@ -77,6 +81,8 @@ const TextInputComponent: React.FC<any> = (props) => {
             <div className="line_container">
               <div style={{ width: '100%' }}>
                 <Input
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   isFail={props.first_name}
                   placeholder="성"
                   type="text"
@@ -85,6 +91,8 @@ const TextInputComponent: React.FC<any> = (props) => {
               </div>
               <div style={{ width: '100%' }}>
                 <Input
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   isFail={props.last_name}
                   placeholder="이름"
                   type="text"
@@ -95,13 +103,15 @@ const TextInputComponent: React.FC<any> = (props) => {
           </label>
         ) : (
           <label className="line">
-            <span className="username">{TextInputType.text}</span>
+            <span className="username">{textInputType.text}</span>
             <div className="line_container">
               <Input
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 isFail={props.isFail}
-                placeholder={TextInputType.placeholder}
-                type={TextInputType.type}
-                name={TextInputType.name}
+                placeholder={textInputType.placeholder}
+                type={textInputType.type}
+                name={textInputType.name}
               />
             </div>
           </label>
@@ -113,11 +123,9 @@ const TextInputComponent: React.FC<any> = (props) => {
               icon={faExclamationCircle as IconProp}
               style={{ marginRight: '5px' }}
             />
-            {TextInputType.warnning}
+            {textInputType.warnning}
           </div>
-        ) : (
-          ''
-        )}
+        ) : null}
       </StyledTextInput>
     </>
   );

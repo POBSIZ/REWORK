@@ -6,19 +6,17 @@ import ProviderLayout from 'src/provider';
 import GlobalProvider from 'src/provider/globalProvider';
 
 import '../styles/init.css';
+import 'aos/dist/aos.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <GlobalProvider>
         <Head>
-          {/* <link rel="icon" href="/favicon.png" /> */}
-          {/* <meta property="og:image" content="/banner.jpg" /> */}
+          <link rel="icon" href="/favicon.png" />
+          <meta property="og:image" content="/banner.png" />
           <meta property="og:title" content="REWORK" />
-          <meta
-            property="og:description"
-            content="REWORK 시스템"
-          />
+          <meta property="og:description" content="REWORK 시스템" />
           <link
             rel="stylesheet"
             type="text/css"

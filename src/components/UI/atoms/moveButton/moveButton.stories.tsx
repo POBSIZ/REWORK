@@ -19,7 +19,7 @@ export default {
     backColor: {
       control: {
         type: 'select',
-        options: ['none', 'primary', 'gradient'],
+        options: ['none', 'primary'],
       },
     },
   },

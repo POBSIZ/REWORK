@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
+import { GlobalStyleType } from 'StyleVars';
 
-import { TextInputParamsType } from '.';
+import { TextInputPropsType } from '.';
 
-const StyledTextInput = styled.div.attrs((props) => ({}))<TextInputParamsType>`
+const StyledTextInput = styled.div.attrs((props) => ({}))<TextInputPropsType>`
   ${(props) => {
-    const colorBaseBlack = props.theme.palette.$color_base_black;
-    const colorRed = props.theme.palette.$color_failure;
-    const failColor = props.isFail == true ? colorRed : colorBaseBlack;
+    const Theme: GlobalStyleType = props.theme;
+    const $color_base_black = Theme.palette.$color_base_black;
+    const $color_failure = Theme.palette.$color_failure;
+    const failColor = props.isFail == true ? $color_failure : $color_base_black;
+    const $tablet_max_width = Theme.media.$tablet_max_width;
     return css`
       width: 100%;
       color: ${failColor};
@@ -30,7 +33,7 @@ const StyledTextInput = styled.div.attrs((props) => ({}))<TextInputParamsType>`
         font-size: 15px;
         margin-bottom: 10px;
       }
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: ${$tablet_max_width}) {
         label span {
           font-size: 14px;
           margin-bottom: 5px;

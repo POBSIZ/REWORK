@@ -9,9 +9,10 @@ import {} from '@fortawesome/free-solid-svg-icons'; // fill 타입 아이콘
 import {} from '@fortawesome/free-regular-svg-icons'; // outline 타입 아이콘
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // HOC
 
+import { ButtonPropsType } from '.';
 import StyledButton from './button_styled';
 
-const ButtonComponent: React.FC<any> = (props) => {
+const ButtonComponent: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
   return (
     <>
       <StyledButton onClick={props.onClick} {...props}>

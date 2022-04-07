@@ -4,8 +4,7 @@ import { GlobalStyleType } from 'StyleVars';
 const StyledStoriesLayout = styled.section.attrs((props) => ({}))`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
-    const colorBaseBlack = Theme.palette.$color_base_black;
-    const colorLineBlack = Theme.palette.$color_base_line;
+    const $color_base_line = Theme.palette.$color_base_line;
     return css`
       width: 100%;
       display: flex;
@@ -22,7 +21,7 @@ const StyledStoriesLayout = styled.section.attrs((props) => ({}))`
       hr {
         width: 100%;
         margin: 10px 0;
-        background-color: ${colorLineBlack};
+        background-color: ${$color_base_line};
       }
 
       .component {

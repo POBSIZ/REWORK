@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import InputComponent from './input_component';
 
-export interface InputParamsType {
+export interface InputPropsType {
   className?: string;
   placeholder: string;
   type:
@@ -13,7 +13,8 @@ export interface InputParamsType {
     | 'current-password'
     | 'new-password'
     | 'email'
-    | 'number';
+    | 'number'
+    | string;
   value: string | number | null;
   onChange: (e: any) => void;
   name?: string;
@@ -25,7 +26,7 @@ export interface InputParamsType {
   max?: number;
 }
 
-const Input: React.FC<InputParamsType> = (
+const Input: React.FC<InputPropsType> = (
   props,
   {
     className,
@@ -37,7 +38,7 @@ const Input: React.FC<InputParamsType> = (
     required,
     disabled,
     isFail,
-  }: InputParamsType,
+  }: InputPropsType,
 ) => {
   return (
     <>

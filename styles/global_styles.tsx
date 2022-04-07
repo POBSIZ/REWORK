@@ -31,21 +31,21 @@ const GlobalStyle = {
   },
   font: {
     // Title
-    $font_title_big: 'font-size: 2.500em; font-weight: 700;',
-    $font_title_medium: 'font-size: 2.000em; font-weight: 700;',
-    $font_title_regular: 'font-size: 1.500em; font-weight: 700',
-    $font_subtitle: 'font-size: 1.125em; font-weight: 400;',
+    $font_title_big: 'font-size: 2.500em; font-weight: 700;', // bold
+    $font_title_medium: 'font-size: 2.000em; font-weight: 700;', // bold
+    $font_title_regular: 'font-size: 1.500em; font-weight: 700', // bold
+    $font_subtitle: 'font-size: 1.125em; font-weight: 400;', // regular
 
     // Body
-    $font_body_head: 'font-size: 1.250em; font-weight: 500;',
-    $font_body_1: 'font-size: 1.000em; font-weight: 400;',
-    $font_body_info: 'font-size: 0.875em; font-weight: 400;',
+    $font_body_head: 'font-size: 1.250em; font-weight: 500;', // medium
+    $font_body_base: 'font-size: 1.000em; font-weight: 400;', // regular
+    $font_body_info: 'font-size: 0.875em; font-weight: 400;', // regular
 
-    // Button & Badge
-    $font_button_default: 'font-size: 1.000em; font-weight: 500;',
-    $font_button_option: 'font-size: 0.875em; font-weight: 400;',
-    $font_button_small: 'font-size: 0.750em; font-weight: 400;',
-    $font_badge_small: 'font-size: 0.625em; font-weight: 400;',
+    // Property
+    $font_prop_default: 'font-size: 1.000em; font-weight: 500;', // medium
+    $font_prop_option: 'font-size: 0.875em; font-weight: 400;', // regular
+    $font_prop_small: 'font-size: 0.750em; font-weight: 400;', // regular
+    $font_prop_xsmall: 'font-size: 0.625em; font-weight: 400;', // regular
   },
   media: {
     $tablet_max_width: '1000px',

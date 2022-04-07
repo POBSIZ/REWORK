@@ -1,9 +1,9 @@
-import React, { CSSProperties, ReactNode, useEffect, Fragment } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 
 import AOS from 'aos';
-import 'aos/dist/aos.css';
+// import 'aos/dist/aos.css';
 
-type Animation = {
+type AnimationType = {
   children: ReactNode;
   animation:
     | `fade-up`
@@ -36,9 +36,9 @@ type Animation = {
   duration?: number;
 };
 
-const AosWrapper: React.FC<Animation> = (
+const AosWrapper: React.FC<AnimationType> = (
   props,
-  { animation, delay = 750, duration = 500, children }: Animation,
+  { animation, delay = 750, duration = 500, children }: AnimationType,
 ) => {
   useEffect(() => {
     AOS.init();

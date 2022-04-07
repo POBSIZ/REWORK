@@ -1,15 +1,14 @@
+import React from 'react';
 import ButtonComponent from './button_component';
-import React, { useEffect, useState, useRef } from 'react';
-import styled, { css } from 'styled-components';
 
-export interface ButtonParamsType {
+export interface ButtonPropsType {
   children: string;
   backColor: 'primary' | 'gradient' | 'black' | 'red';
   isDisabled?: boolean;
   onClick?: () => {} | void;
 }
 
-const Button: React.FC<ButtonParamsType> = (props, {}: ButtonParamsType) => {
+const Button: React.FC<ButtonPropsType> = (props: ButtonPropsType) => {
   return (
     <>
       <ButtonComponent {...props} />

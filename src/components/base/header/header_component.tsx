@@ -1,29 +1,20 @@
-import React, { useEffect, useState, useRef } from 'react';
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
-import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
-import { useCookies } from 'react-cookie';
-import axios from 'axios';
-import Atoms, { Logo } from 'Atoms/index';
-import Molecules from 'Molecules/index';
-import Organisms from 'Organisms/index';
-import {} from '@fortawesome/free-brands-svg-icons'; // 브랜드 아이콘
+import React, { useState, useCallback } from 'react';
+import { Logo } from 'Atoms';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faBars } from '@fortawesome/free-solid-svg-icons'; // fill 타입 아이콘
-import {} from '@fortawesome/free-regular-svg-icons'; // outline 타입 아이콘
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // HOC
 import Link from 'next/link';
 import { nanoid } from 'nanoid';
 
+import { HeaderPropsType } from '.';
 import StyledHeader from './header_styled';
-import { listenerCount } from 'process';
 
-function NavTab({ logout, isAuthenticated, profile, navList }) {
+const NavTab: React.FC<HeaderPropsType> = ({ navList }: HeaderPropsType) => {
   const [navTabStyle, setNavTabStyle] = useState<any>();
   const [navBgStyle, setNavBgStyle] = useState<any>();
   const [navStyle, setNavStyle] = useState<any>();
 
-  const navOpen = () => {
+  const navOpen = useCallback(() => {
     setNavTabStyle({
       transform: 'translateX(-50%)',
       opacity: '100%',
@@ -36,9 +27,9 @@ function NavTab({ logout, isAuthenticated, profile, navList }) {
       transform: 'translateX(0%)',
       opacity: '100%',
     });
-  };
+  }, [navTabStyle, navBgStyle, navStyle]);
 
-  const navClose = () => {
+  const navClose = useCallback(() => {
     setNavStyle({
       transform: `translateX(100%)`,
       opacity: '0',
@@ -53,7 +44,7 @@ function NavTab({ logout, isAuthenticated, profile, navList }) {
         opacity: '0',
       });
     }, 400);
-  };
+  }, [navTabStyle, navBgStyle, navStyle]);
 
   return (
     <nav className="nav">
@@ -66,39 +57,7 @@ function NavTab({ logout, isAuthenticated, profile, navList }) {
       <div className="navTab" style={navTabStyle}>
         <div className="navTab-container" style={navStyle}>
           <div className="navTab-user">
-            {isAuthenticated == false || isAuthenticated == undefined ? (
-              <>
-                <Link href="/auth/login">
-                  <a className="user-login" onClick={navClose}>
-                    로그인
-                  </a>
-                </Link>
-
-                <p className="user-more">안녕하세요!</p>
-              </>
-            ) : (
-              <>
-                <div className="user-profile">
-                  <div className="profile_left">
-                    <Link href="/profile">
-                      <a className="profile-img" onClick={navClose}></a>
-                    </Link>
-                    <span>
-                      <strong>{profile?.username || 'USER'}</strong> 님
-                    </span>
-                  </div>
-                  <button
-                    onClick={() => {
-                      logout();
-                      navClose();
-                    }}
-                    className="user-logout"
-                  >
-                    로그아웃
-                  </button>
-                </div>
-              </>
-            )}
+            <p className="user-more">안녕하세요!</p>
           </div>
           <ul className="navTab-link">
             {navList?.map((item) => (
@@ -112,25 +71,17 @@ function NavTab({ logout, isAuthenticated, profile, navList }) {
       </div>
     </nav>
   );
-}
+};
 
-const HeaderComponent: React.FC<any> = ({
-  logout,
-  isAuthenticated,
-  profile,
+const HeaderComponent: React.FC<HeaderPropsType> = ({
   navList,
-}) => {
+}: HeaderPropsType) => {
   return (
     <StyledHeader className="header">
       <div className="logo">
         <Logo href={'/'}>{process.env.NEXT_PUBLIC_TITLE}</Logo>
       </div>
-      <NavTab
-        logout={logout}
-        isAuthenticated={isAuthenticated}
-        profile={profile}
-        navList={navList}
-      />
+      <NavTab navList={navList} />
     </StyledHeader>
   );
 };

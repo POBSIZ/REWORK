@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import { GlobalStyleType } from 'StyleVars';
-import { EditInputProps } from '.';
+import { EditInputPropsType } from '.';
 
-const StyledEditInput = styled.input.attrs((props: EditInputProps) => ({
+const StyledEditInput = styled.input.attrs((props: EditInputPropsType) => ({
   type: 'text',
   placeholder: props.placeholder,
   disabled: props.isDisabled,
@@ -10,7 +10,7 @@ const StyledEditInput = styled.input.attrs((props: EditInputProps) => ({
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
     const color_base_gray = Theme.palette.$color_base_gray;
-    const color_key_blue = Theme.palette.$color_key_blue;
+    const color_key_color = Theme.palette.$color_key_color;
     return css`
       width: 100%;
       height: 45px;
@@ -27,8 +27,8 @@ export const StyledEditInputWrapper = styled.div.attrs((props) => ({}))`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
     const color_base_gray = Theme.palette.$color_base_gray;
-    const color_key_blue = Theme.palette.$color_key_blue;
-    const font_badge_small = Theme.font.$font_badge_small;
+    const color_key_color = Theme.palette.$color_key_color;
+    const font_badge_small = Theme.font.$font_prop_xsmall;
     return css`
       width: 100%;
       height: 60px;
@@ -45,11 +45,11 @@ export const StyledEditInputWrapper = styled.div.attrs((props) => ({}))`
         }
 
         ${StyledEditInput}:focus {
-          border-bottom: 1px solid ${color_key_blue};
+          border-bottom: 1px solid ${color_key_color};
         }
 
         ${StyledEditInput}:focus + .icon {
-          color: ${color_key_blue};
+          color: ${color_key_color};
         }
       }
 

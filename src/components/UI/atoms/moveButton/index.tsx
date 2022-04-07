@@ -1,14 +1,9 @@
 // crd
-import React, { useEffect, useState, useRef } from 'react';
-import styled, { css } from 'styled-components';
-import { useSelector, useDispatch, RootStateOrAny } from 'react-redux';
-import Actions from 'Actions/index';
-import axios from 'axios';
-import { useCookies } from 'react-cookie';
+import React from 'react';
 
 import MoveComponent from './moveButton_component';
 
-export interface MoveParamsType {
+export interface MoveButtonPropsType {
   children: string;
   href: string;
   radius: 'none' | '4' | '8' | '16' | '32' | '64';
@@ -17,9 +12,9 @@ export interface MoveParamsType {
   backColor: 'none' | 'primary' | 'gradient';
 }
 
-const MoveButton: React.FC<MoveParamsType> = (
+const MoveButton: React.FC<MoveButtonPropsType> = (
   props,
-  { children, href, radius, height, width, backColor }: MoveParamsType,
+  { children, href, radius, height, width, backColor }: MoveButtonPropsType,
 ) => {
   return (
     <>

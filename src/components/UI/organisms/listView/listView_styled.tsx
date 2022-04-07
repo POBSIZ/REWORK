@@ -1,20 +1,20 @@
 import styled, { css } from 'styled-components';
+import { GlobalStyleType } from 'StyleVars';
 
 const StyledListView = styled.ul.attrs((props) => ({}))`
   ${(props) => {
-    const {
-      $color_key_blue,
-      $color_base_black,
-      $color_base_line,
-      $color_failure,
-    } = props.theme.palette;
+    const Theme: GlobalStyleType = props.theme;
+
+    const { $color_key_color, $color_base_black, $color_base_line } =
+      Theme.palette;
 
     const {
       $font_title_regular,
-      $font_body_1,
+      $font_body_base,
       $font_body_info,
-      $font_button_small,
-    } = props.theme.font;
+      $font_prop_small,
+    } = Theme.font;
+
     return css`
       .list_item {
         box-sizing: border-box;
@@ -41,7 +41,7 @@ const StyledListView = styled.ul.attrs((props) => ({}))`
 
         .list_item_detail {
           margin: 5px 0;
-          ${$font_body_1}
+          ${$font_body_base}
         }
 
         .list_item_detail-user {
@@ -78,9 +78,9 @@ const StyledListView = styled.ul.attrs((props) => ({}))`
           width: fit-content;
           padding: 4px 10px;
           margin: 0 5px;
-          ${$font_button_small}
+          ${$font_prop_small}
           font-weight: 400;
-          background-color: ${$color_key_blue};
+          background-color: ${$color_key_color};
           border-radius: 16px;
           color: #fff;
         }
@@ -106,7 +106,7 @@ const StyledListView = styled.ul.attrs((props) => ({}))`
       }
 
       .like-count {
-        ${$font_body_1}
+        ${$font_body_base}
       }
     `;
   }};

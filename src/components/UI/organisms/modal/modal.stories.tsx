@@ -6,20 +6,13 @@ import StoriesLayout from 'src/components/stories/storiesLayout';
 export default {
   title: 'Atoms/Modal',
   component: ModalComponent,
-  argTypes: {
-    backColor: {
-      control: {
-        type: 'select',
-        options: ['white', 'primary', 'gradient', 'black'],
-      },
-    },
-  },
+  argTypes: {},
 } as Meta;
 
 const Template: Story<any> = (args) => (
   <StoriesLayout title="Atoms/Modal">
     <div style={{ width: args.width }}>
-      <span className="info">Primary</span>
+      <span className="info">Default</span>
       <ModalComponent></ModalComponent>
     </div>
   </StoriesLayout>

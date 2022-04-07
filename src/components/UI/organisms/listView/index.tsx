@@ -8,15 +8,13 @@ import ListViewComponent from './listView_component';
 
 import { ListViewPropsType } from './listView_types';
 
-import Bases, { Loader } from 'Bases';
-
 const ListView: React.FC<ListViewPropsType> = (
   props,
   { item_list, with_imgs }: ListViewPropsType,
 ) => {
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<h1>Loading...</h1>}>
         <ListViewComponent {...props} />
       </Suspense>
     </>

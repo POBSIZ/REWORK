@@ -1,37 +1,25 @@
-// csc
-
 import styled, { css } from 'styled-components';
+import { GlobalStyleType } from 'StyleVars';
 
-import { MoveParamsType } from '.';
+import { MoveButtonPropsType } from '.';
 
-const StyledMoveButton = styled.a.attrs((props) => ({}))<MoveParamsType>`
+const StyledMoveButton = styled.a.attrs((props) => ({}))<MoveButtonPropsType>`
   ${(props) => {
-    const propsWidth = props.width;
-    const propsHeight = props.height;
-    const radius = props.radius;
-    const colorKeyGradient = props.theme.palette.$color_key_gradient;
-    const colorKeyBlue = props.theme.palette.$color_key_blue;
-    const colorKeyRed = props.theme.palette.$color_key_red;
-    const colorBaseBlack = props.theme.palette.$color_base_black;
+    const Theme: GlobalStyleType = props.theme;
+    const $color_key_color = Theme.palette.$color_key_color;
+    const $color_base_black = Theme.palette.$color_base_black;
 
     const backgroundColor =
       props.backColor == 'primary'
-        ? `background-color: ${colorKeyBlue};`
-        : props.backColor == 'gradient'
-        ? `background-image: ${colorKeyGradient};`
+        ? `background-color: ${$color_key_color};`
         : 'transparent';
 
-    const textColor =
-      props.backColor == 'primary'
-        ? '#fff'
-        : props.backColor == 'gradient'
-        ? '#fff'
-        : colorBaseBlack;
+    const textColor = props.backColor == 'primary' ? '#fff' : $color_base_black;
 
     return css`
       ${backgroundColor}
-      width: ${propsWidth};
-      height: ${propsHeight};
+      width: ${props.width};
+      height: ${props.height};
       text-decoration: none;
       display: flex;
       justify-content: center;
@@ -41,7 +29,7 @@ const StyledMoveButton = styled.a.attrs((props) => ({}))<MoveParamsType>`
       color: ${textColor};
       padding: 10px 20px;
       font-weight: 500;
-      border-radius: ${radius + 'px'};
+      border-radius: ${props.radius + 'px'};
     `;
   }};
 `;

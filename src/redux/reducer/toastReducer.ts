@@ -3,13 +3,13 @@ import { createReducer } from 'redux-immutablejs';
 import { Map, List, fromJS, Record } from 'immutable';
 import {
   ToastReducerType,
-  toastActionType,
+  ToastActionType,
   PayloadType,
 } from 'Types/toastTypes';
 import { PUSH_TOAST_SUCCESS, INIT_TOAST } from 'Actions/toastAction';
 
 const initialState = Map({
-  is_pop: false,
+  isPop: false,
   status: 'default',
   message: '',
 });
@@ -19,14 +19,14 @@ const toastReducer = createReducer<any>(
   {
     [PUSH_TOAST_SUCCESS]: (state, action: PayloadType) => {
       return state.merge({
-        is_pop: true,
+        isPop: true,
         status: action.payload.status,
         message: action.payload.message,
       });
     },
     [INIT_TOAST]: (state, action) => {
       return state.merge({
-        is_pop: false,
+        isPop: false,
       });
     },
   },

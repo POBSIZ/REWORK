@@ -5,17 +5,17 @@ import { GlobalStyleType } from 'StyleVars';
 const StyledHeader = styled.header.attrs((props) => {})`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
-    const headerKeyBlue = Theme.palette.$color_key_blue;
-    const headerLineBlack = Theme.palette.$color_base_line;
-    const headerBaseBlack = Theme.palette.$color_base_black;
-    const headerDesktopHeight = props.theme.size.$header_desktop_line_height;
-    const headerMobileHeight = props.theme.size.$header_mobile_line_height;
+    const $color_key_color = Theme.palette.$color_key_color;
+    const $color_base_line = Theme.palette.$color_base_line;
+    const $color_base_black = Theme.palette.$color_base_black;
+    const $header_desktop_line_height = Theme.size.$header_desktop_line_height;
+    const $header_mobile_line_height = Theme.size.$header_mobile_line_height;
     return css`
       position: fixed;
       z-index: 5;
       top: 0;
       width: 100%;
-      height: ${headerDesktopHeight};
+      height: ${$header_desktop_line_height};
       padding: 0 5%;
       display: flex;
       justify-content: space-between;
@@ -45,16 +45,16 @@ const StyledHeader = styled.header.attrs((props) => {})`
 
       .nav {
         position: relative;
-        line-height: ${headerDesktopHeight};
+        line-height: ${$header_desktop_line_height};
         display: flex;
         align-items: center;
         overflow: hidden;
         .nav-menuBar {
           cursor: pointer;
-          color: ${headerBaseBlack};
+          color: ${$color_base_black};
           border: none;
           font-size: 25px;
-          line-height: ${headerDesktopHeight};
+          line-height: ${$header_desktop_line_height};
           padding: 0;
           background-color: transparent;
         }
@@ -89,7 +89,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
             transition: all 0.4s ease-in-out;
             .navTab-user {
               padding: 0 5% 5%;
-              border-bottom: 1px solid ${headerLineBlack};
+              border-bottom: 1px solid ${$color_base_line};
               .user-login {
                 text-decoration: none;
                 line-height: initial;
@@ -97,7 +97,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
                 width: auto;
                 font-size: 30px;
                 font-weight: bold;
-                color: ${headerBaseBlack};
+                color: ${$color_base_black};
                 transition: all 0.3s ease;
                 &::after {
                   position: relative;
@@ -105,7 +105,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
                   display: block;
                   transform: scaleX(0%);
                   height: 3px;
-                  background-color: ${headerBaseBlack};
+                  background-color: ${$color_base_black};
                   top: -5px;
                   will-change: transform;
                   transition: all 0.3s;
@@ -134,7 +134,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
                     display: block;
                     width: 50px;
                     height: 50px;
-                    background-color: ${headerBaseBlack};
+                    background-color: ${$color_base_black};
                     border-radius: 100%;
                     background-position: center;
                     background-repeat: no-repeat;
@@ -146,7 +146,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
                   top: 2px;
                   display: block;
                   cursor: pointer;
-                  color: ${headerBaseBlack};
+                  color: ${$color_base_black};
                   display: block;
                   width: fit-content;
                   font-size: 20px;
@@ -161,7 +161,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
                     display: block;
                     transform: scaleX(0%);
                     height: 2px;
-                    background-color: ${headerBaseBlack};
+                    background-color: ${$color_base_black};
                     top: 0px;
                     will-change: transform;
                     transition: all 0.3s;
@@ -181,7 +181,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
                 margin: 0;
                 a {
                   text-decoration: underline;
-                  color: ${headerKeyBlue};
+                  color: ${$color_key_color};
                 }
               }
             }
@@ -196,12 +196,12 @@ const StyledHeader = styled.header.attrs((props) => {})`
                 line-height: 55px;
                 font-size: 20px;
                 font-weight: 500;
-                color: ${headerBaseBlack};
-                border-bottom: 1px solid ${headerLineBlack};
+                color: ${$color_base_black};
+                border-bottom: 1px solid ${$color_base_line};
                 will-change: padding;
                 transition: all 0.3s;
                 &:hover {
-                  background-color: ${headerBaseBlack};
+                  background-color: ${$color_base_black};
                   color: #fff;
                   padding: 0 10%;
                 }
@@ -220,7 +220,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
 
             width: 70%;
             height: 100vh;
-            background-color: ${headerLineBlack};
+            background-color: ${$color_base_line};
             will-change: opacity, transform;
             transition: all 0.4s ease-in-out;
           }
@@ -228,7 +228,7 @@ const StyledHeader = styled.header.attrs((props) => {})`
       }
 
       @media screen and (max-width: 1000px) {
-        height: ${headerMobileHeight};
+        height: ${$header_mobile_line_height};
         padding: 0 5%;
 
         .logo {
@@ -241,9 +241,9 @@ const StyledHeader = styled.header.attrs((props) => {})`
         }
 
         .nav {
-          line-height: ${headerMobileHeight};
+          line-height: ${$header_mobile_line_height};
           .nav-menuBar {
-            line-height: ${headerMobileHeight};
+            line-height: ${$header_mobile_line_height};
           }
 
           .navTab {
