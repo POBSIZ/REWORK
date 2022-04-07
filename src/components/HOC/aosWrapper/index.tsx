@@ -1,10 +1,10 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, ReactElement, useEffect } from 'react';
 
 import AOS from 'aos';
-// import 'aos/dist/aos.css';
+import 'aos/dist/aos.css';
 
 type AnimationType = {
-  children: ReactNode;
+  children: ReactElement;
   animation:
     | `fade-up`
     | `fade-down`
@@ -36,22 +36,21 @@ type AnimationType = {
   duration?: number;
 };
 
-const AosWrapper: React.FC<AnimationType> = (
-  props,
-  { animation, delay = 750, duration = 500, children }: AnimationType,
-) => {
+const AosWrapper: React.FC<AnimationType> = (props: AnimationType) => {
   useEffect(() => {
     AOS.init();
   });
-  return (
-    <div
-      data-aos={animation}
-      data-aos-delay={delay}
-      data-aos-duration={duration}
-    >
-      {props.children}
-    </div>
-  );
+  return React.cloneElement(props.children, {
+    ...props,
+    'data-aos': props.animation,
+    'data-aos-delay': props.delay,
+    'data-aos-duration': props.duration,
+  });
+};
+
+AosWrapper.defaultProps = {
+  delay: 750,
+  duration: 500,
 };
 
 export default AosWrapper;

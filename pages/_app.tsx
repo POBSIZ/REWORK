@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
@@ -6,7 +6,6 @@ import ProviderLayout from 'src/provider';
 import GlobalProvider from 'src/provider/globalProvider';
 
 import '../styles/init.css';
-import 'aos/dist/aos.css';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

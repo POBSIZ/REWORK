@@ -1,4 +1,3 @@
-import Test from './test';
 import Logo from './logo';
 import Input from './input';
 import Button from './button';
@@ -9,7 +8,6 @@ import Like from './like';
 import EditInput from './editInput';
 
 const Atoms = {
-  Test,
   Logo,
   Input,
   Button,
@@ -22,14 +20,4 @@ const Atoms = {
 
 export default Atoms;
 
-export {
-  Test,
-  Logo,
-  Input,
-  Button,
-  MoveButton,
-  Select,
-  Badge,
-  Like,
-  EditInput,
-};
+export { Logo, Input, Button, MoveButton, Select, Badge, Like, EditInput };
