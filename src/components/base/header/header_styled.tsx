@@ -21,7 +21,8 @@ const StyledHeader = styled.header.attrs((props) => {})`
       justify-content: space-between;
       box-shadow: 0px 1px 0px rgba(56, 56, 56, 0.3);
       font-weight: 500;
-      background-color: rgba(255, 255, 255, 0.98);
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
 
       .logo {
         display: flex;

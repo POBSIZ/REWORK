@@ -1,12 +1,20 @@
-import { type } from 'os';
-import styled, {
-  createGlobalStyle,
-  ThemeProvider,
-  css,
-} from 'styled-components';
-import { Type } from 'typescript';
+import window from "global/window";
+
+const isDark =
+  window.matchMedia &&
+  window.matchMedia('(prefers-color-scheme: Dark)').matches;
+const baseThemes = isDark
+  ? {
+      color: 'rgb(255, 255, 255, 100%)',
+      BG: '',
+    }
+  : {
+      color: 'rgb(30, 30, 30, 100%)',
+      BG: '',
+    };
 
 const GlobalStyle = {
+  baseTheme: { ...baseThemes },
   palette: {
     // 키 컬러
     $color_key_color: '#3182F6',

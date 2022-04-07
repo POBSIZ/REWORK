@@ -12,7 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <GlobalProvider>
         <Head>
-          <link rel="icon" href="/favicon.png" />
+          <link rel="icon" href="/favicon.ico" />
           <meta property="og:image" content="/banner.png" />
           <meta property="og:title" content="REWORK" />
           <meta property="og:description" content="REWORK 시스템" />

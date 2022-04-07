@@ -1,9 +1,7 @@
 import React, { ReactNode, ReactElement, useEffect } from 'react';
+import AosInitializer from './initializer';
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
-type AnimationType = {
+export interface AnimationType {
   children: ReactElement;
   animation:
     | `fade-up`
@@ -34,14 +32,10 @@ type AnimationType = {
     | `flip-down`;
   delay?: number;
   duration?: number;
-};
+}
 
 const AosWrapper: React.FC<AnimationType> = (props: AnimationType) => {
-  useEffect(() => {
-    AOS.init();
-  });
   return React.cloneElement(props.children, {
-    ...props,
     'data-aos': props.animation,
     'data-aos-delay': props.delay,
     'data-aos-duration': props.duration,
@@ -54,3 +48,4 @@ AosWrapper.defaultProps = {
 };
 
 export default AosWrapper;
+export { AosInitializer };

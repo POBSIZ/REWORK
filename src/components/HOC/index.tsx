@@ -1,7 +1,7 @@
-import AosWrapper from './aosWrapper';
+import AosWrapper, { AosInitializer } from './aosWrapper';
 import BlockChangePage from './blockChangePage';
 
-const Hoc = { AosWrapper, BlockChangePage };
+const Hoc = { AosWrapper, AosInitializer, BlockChangePage };
 
 export default Hoc;
-export { AosWrapper, BlockChangePage };
+export { AosWrapper, AosInitializer, BlockChangePage };

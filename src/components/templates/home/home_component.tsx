@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import StyledHome from './home_styled';
-import { AosWrapper } from 'Hoc';
+import { AosWrapper, AosInitializer } from 'Hoc';
 
 const HomeComponent: React.FC<any> = ({}) => {
   return (
-    <StyledHome className="home_about">
-      <AosWrapper animation="fade-up">
-        <h1>Hello</h1>
-      </AosWrapper>
-    </StyledHome>
+    <AosInitializer>
+      <StyledHome className="home_about">
+        {[...Array(100)].map((item, id) => (
+          <AosWrapper animation="fade-up" delay={100} key={id}>
+            <h1>Hello</h1>
+          </AosWrapper>
+        ))}
+      </StyledHome>
+    </AosInitializer>
   );
 };
 
