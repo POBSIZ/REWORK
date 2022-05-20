@@ -4,9 +4,9 @@ import { GlobalStyleType } from 'StyleVars';
 const StyledLogo = styled.span.attrs((props) => ({}))`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
-    const baseColor = Theme.baseTheme.color;
+    const $base_theme_color = Theme.baseTheme.color;
     return css`
-      color: ${baseColor};
+      text-decoration: none;
     `;
   }};
 `;

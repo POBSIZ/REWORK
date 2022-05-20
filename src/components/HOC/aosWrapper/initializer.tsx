@@ -6,7 +6,7 @@ import 'aos/dist/aos.css';
 const AosInitializer: React.FC<any> = (props) => {
   useEffect(() => {
     AOS.init();
-  });
+  }, []);
   return <>{props.children}</>;
 };
 

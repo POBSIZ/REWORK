@@ -1,6 +1,3 @@
-import SocketClient from './socket';
-
-const Utils = { SocketClient };
-
+const Utils = {};
 export default Utils;
-export { SocketClient };
+export {};

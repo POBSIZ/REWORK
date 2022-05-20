@@ -1,4 +1,4 @@
-import window from "global/window";
+import window from 'global/window';
 
 const isDark =
   window.matchMedia &&
@@ -20,11 +20,12 @@ const GlobalStyle = {
     $color_key_color: '#3182F6',
 
     // 기본 팔레트
-    $color_base_line: 'rgba(30, 30, 30, 20%)',
-    $color_base_black: 'rgb(30, 30, 30, 100%)',
-    $color_base_gray: 'rgb(30, 30, 30, 50%)',
-    $color_base_LightGray: 'rgb(30, 30, 30, 8%)',
     $color_base_white: 'rgb(255, 255, 255, 100%)',
+    $color_base_LightGray: 'rgb(30, 30, 30, 8%)',
+    $color_base_line: 'rgba(30, 30, 30, 20%)',
+    $color_base_gray: 'rgb(30, 30, 30, 50%)',
+    $color_base_black: 'rgb(30, 30, 30, 100%)',
+    $color_base_dark: 'rgb(10, 10, 10, 100%)',
 
     // 알림 팔레트
     $color_failure: 'rgb(231, 76, 60, 100%)',
@@ -39,21 +40,21 @@ const GlobalStyle = {
   },
   font: {
     // Title
-    $font_title_big: 'font-size: 2.500em; font-weight: 700;', // bold
-    $font_title_medium: 'font-size: 2.000em; font-weight: 700;', // bold
-    $font_title_regular: 'font-size: 1.500em; font-weight: 700', // bold
-    $font_subtitle: 'font-size: 1.125em; font-weight: 400;', // regular
+    $font_title_big: 'font-size: 2.500rem; font-weight: 700;', // bold
+    $font_title_medium: 'font-size: 2.000rem; font-weight: 700;', // bold
+    $font_title_regular: 'font-size: 1.500rem; font-weight: 700', // bold
+    $font_subtitle: 'font-size: 1.125rem; font-weight: 400;', // regular
 
     // Body
-    $font_body_head: 'font-size: 1.250em; font-weight: 500;', // medium
-    $font_body_base: 'font-size: 1.000em; font-weight: 400;', // regular
-    $font_body_info: 'font-size: 0.875em; font-weight: 400;', // regular
+    $font_body_head: 'font-size: 1.250rem; font-weight: 500;', // medium
+    $font_body_base: 'font-size: 1.000rem; font-weight: 400;', // regular
+    $font_body_info: 'font-size: 0.875rem; font-weight: 400;', // regular
 
     // Property
-    $font_prop_default: 'font-size: 1.000em; font-weight: 500;', // medium
-    $font_prop_option: 'font-size: 0.875em; font-weight: 400;', // regular
-    $font_prop_small: 'font-size: 0.750em; font-weight: 400;', // regular
-    $font_prop_xsmall: 'font-size: 0.625em; font-weight: 400;', // regular
+    $font_prop_default: 'font-size: 1.000rem; font-weight: 500;', // medium
+    $font_prop_option: 'font-size: 0.875rem; font-weight: 400;', // regular
+    $font_prop_small: 'font-size: 0.750rem; font-weight: 400;', // regular
+    $font_prop_xsmall: 'font-size: 0.625rem; font-weight: 400;', // regular
   },
   media: {
     $tablet_max_width: '1000px',

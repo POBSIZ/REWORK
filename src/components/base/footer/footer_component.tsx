@@ -15,18 +15,27 @@ import StyledFooter from './footer_styled';
 const FooterComponent: React.FC<any> = ({}) => {
   return (
     <StyledFooter className="footer">
-      <h3 className="footer-logo">{process.env.NEXT_PUBLIC_TITLE}</h3>
-      <div className="footer-mid">
-        <div className="footer-copyright">
-          ©Copyright 2021 {process.env.NEXT_PUBLIC_TITLE} All rights reserved
+      <div className="footer-info">
+        <h3 className="footer-logo">{process.env.NEXT_PUBLIC_TITLE}</h3>
+        <div className="footer-desc">
+          <p>
+            부산광역시 수영구 수영로 594번길 107
+            <span>|</span>
+            대표번호 010-1234-1234
+          </p>
+          <p>
+            대표이사: 허상원
+            <span>|</span>
+            사업자등록번호: 201-81-02823
+          </p>
+          <div className="footer-copyright">
+            ©Copyright 2021 {process.env.NEXT_PUBLIC_TITLE} All rights reserved
+          </div>
         </div>
-        <div className="footer-address">{process.env.NEXT_PUBLIC_TITLE}</div>
       </div>
+
       <div className="footer-link">
-        <a
-          href="/"
-          target="_blank"
-        >
+        <a href="/" target="_blank">
           <FontAwesomeIcon icon={faYoutube as IconProp} />
         </a>
         <a href="https://www.instagram.com/pobsiz" target="_blank">

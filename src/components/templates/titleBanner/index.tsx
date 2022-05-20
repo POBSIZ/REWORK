@@ -4,21 +4,20 @@ import Actions from 'Actions/index';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
-import IconInputComponent from './iconInput_component';
+import TitleBannerComponent from './titleBanner_component';
 
-export interface IconInputPropsType {
-  type: 'username' | 'password';
+export interface TitleBannerPropsType {
+  imgSrc: string;
 }
 
-const IconInput: React.FC<IconInputPropsType> = (
-  props,
-  { type }: IconInputPropsType,
+const TitleBanner: React.FC<TitleBannerPropsType> = (
+  props: TitleBannerPropsType,
 ) => {
   return (
     <>
-      <IconInputComponent {...props} />
+      <TitleBannerComponent {...props} />
     </>
   );
 };
 
-export default IconInput;
+export default TitleBanner;

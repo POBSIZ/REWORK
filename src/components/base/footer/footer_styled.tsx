@@ -1,46 +1,74 @@
 import styled, { css } from 'styled-components';
+import { GlobalStyleType } from 'StyleVars';
 
 const StyledFooter = styled.footer.attrs((props) => {})`
   ${(props) => {
-    const $color_base_black = props.theme.palette.$color_base_black;
+    const Theme: GlobalStyleType = props.theme;
+
+    const $color_base_black = Theme.palette.$color_base_black;
+    const $color_base_white = Theme.palette.$color_base_white;
+
+    const $font_title_big = Theme.font.$font_title_big;
+    const $font_body_info = Theme.font.$font_body_info;
+    const $font_prop_xsmall = Theme.font.$font_prop_xsmall;
+
+    const $tablet_max_width = Theme.media.$tablet_max_width;
+
     return css`
-      min-height: 150px;
+      min-height: 300px;
       padding: 0 5%;
       box-shadow: 0 0 10px rgba(70, 70, 70, 0.3);
       background-color: ${$color_base_black};
-      color: #fff;
+      color: ${$color_base_white};
 
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
+      flex-flow: row;
+      align-items: center;
       flex-wrap: wrap;
 
-      .footer-logo {
-        font-weight: black;
-        font-size: 2.2em;
-        line-height: 150px;
-      }
-
-      .footer-mid {
+      .footer-info {
         display: flex;
-        flex-flow: column;
-        text-align: center;
-        align-items: center;
+        flex-flow: row;
+        text-align: start;
         justify-content: center;
-        font-size: 0.8rem;
+        gap: 40px;
 
-        .footer-copyright {
+        .footer-logo {
+          ${$font_title_big};
+          margin: 0;
         }
-        .footer-address {
-          margin-top: 10px;
+
+        .footer-desc {
+          display: flex;
+          flex-flow: column;
+          align-items: start;
+          gap: 10px;
+          p {
+            ${$font_body_info};
+            margin: 0;
+            span {
+              margin: 0 10px;
+            }
+          }
+          .footer-copyright {
+            ${$font_prop_xsmall};
+          }
         }
       }
 
       .footer-link {
         a {
           font-size: 35px;
-          line-height: 150px;
           padding: 0 10px;
           color: #fff;
+        }
+      }
+
+      @media screen and (max-width: ${$tablet_max_width}) {
+        /* flex-flow: column; */
+        .footer-info {
+          flex-flow: column;
         }
       }
     `;

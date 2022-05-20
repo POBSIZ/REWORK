@@ -6,7 +6,7 @@ import { useCookies } from 'react-cookie';
 
 import BadgeComponent from './badge_component';
 
-export interface BadgeParamsType {
+export interface BadgePropsType {
   children: string;
   backColor: string;
   textColor?: string;
@@ -14,9 +14,9 @@ export interface BadgeParamsType {
   size: string;
 }
 
-const Badge: React.FC<BadgeParamsType> = (
+const Badge: React.FC<BadgePropsType> = (
   props,
-  { children, backColor, textColor, radius, size }: BadgeParamsType,
+  { children, backColor, textColor, radius, size }: BadgePropsType,
 ) => {
   return (
     <>

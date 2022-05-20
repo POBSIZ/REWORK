@@ -12,15 +12,15 @@ import { useCookies } from 'react-cookie';
 
 import StoiesLayoutComponent from './layout_component';
 
-export interface StoriesLayoutParamsType {
+export interface StoriesLayoutPropsType {
   title: string;
   style?: CSSProperties;
   children: ReactNode;
 }
 
-const StoriesLayout: React.FC<StoriesLayoutParamsType> = (
+const StoriesLayout: React.FC<StoriesLayoutPropsType> = (
   props,
-  { title, style, children }: StoriesLayoutParamsType,
+  { title, style, children }: StoriesLayoutPropsType,
 ) => {
   return (
     <>

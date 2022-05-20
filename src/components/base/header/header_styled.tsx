@@ -2,289 +2,171 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { GlobalStyleType } from 'StyleVars';
 
+import StyledLogo from 'Atoms/logo/logo_styled';
+
+export const NavList = styled.nav.attrs((props) => {})`
+  ${(props) => {
+    const Theme: GlobalStyleType = props.theme;
+
+    const $base_theme_color = Theme.baseTheme.color;
+
+    const $font_title_regular = Theme.font.$font_title_regular;
+    const $font_subtitle = Theme.font.$font_subtitle;
+    const $font_body_head = Theme.font.$font_body_head;
+
+    const $tablet_max_width = Theme.media.$tablet_max_width;
+
+    const $color_key_color = Theme.palette.$color_key_color;
+    const $color_base_line = Theme.palette.$color_base_line;
+    const $color_base_white = Theme.palette.$color_base_white;
+    const $color_base_black = Theme.palette.$color_base_black;
+
+    const $display_state_position = props.isOpen ? '0' : '100%';
+    const $display_state_opacity = props.isOpen ? '100%' : '0%';
+    return css`
+      display: flex;
+
+      ul {
+        li {
+          display: none;
+        }
+        a {
+          font-size: ${$font_subtitle};
+          margin: 0 10px;
+          color: ${$base_theme_color};
+          text-decoration: none;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      @media screen and (max-width: ${$tablet_max_width}) {
+        display: flex;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: ${$color_base_line};
+        right: 0;
+        top: 0;
+
+        align-items: flex-end;
+        flex-flow: column;
+
+        transform: translateX(${$display_state_position});
+        opacity: ${$display_state_opacity};
+        transition: all 0.3s;
+
+        ul {
+          display: flex;
+          flex-flow: column;
+          justify-content: flex-start;
+          margin: 0;
+          padding: 0;
+          background-color: ${$color_base_white};
+          backdrop-filter: blur(10px);
+          width: 100%;
+          height: 100vh;
+          
+          li {
+            background-color: ${$color_base_white};
+            color: ${$color_key_color};
+            ${$font_title_regular};
+            display: flex;
+            padding: 0 5%;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            height: 60px;
+            border-bottom: 1px solid ${$color_base_line};
+            .Icon {
+              ${$font_title_regular};
+              cursor: pointer;
+            }
+          }
+
+          a {
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            margin: 0;
+            height: 60px;
+            background-color: ${$color_base_white};
+            font-size: ${$font_body_head};
+            border-bottom: 1px solid ${$color_base_line};
+            transition: all .3s;
+            &:hover {
+              padding: 0 10%;
+              background-color: ${$color_base_black};
+              color: ${$color_base_white}
+            }
+          }
+        }
+      }
+    `;
+  }}
+`;
+
 const StyledHeader = styled.header.attrs((props) => {})`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
+    const $base_theme_color = Theme.baseTheme.color;
     const $color_key_color = Theme.palette.$color_key_color;
-    const $color_base_line = Theme.palette.$color_base_line;
     const $color_base_black = Theme.palette.$color_base_black;
+    const $color_base_white = Theme.palette.$color_base_white;
+    const $tablet_max_width = Theme.media.$tablet_max_width;
     const $header_desktop_line_height = Theme.size.$header_desktop_line_height;
     const $header_mobile_line_height = Theme.size.$header_mobile_line_height;
     return css`
       position: fixed;
       z-index: 5;
       top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      /* border-radius: 32px; */
       width: 100%;
       height: ${$header_desktop_line_height};
       padding: 0 5%;
       display: flex;
       justify-content: space-between;
-      box-shadow: 0px 1px 0px rgba(56, 56, 56, 0.3);
+      align-items: center;
+      /* box-shadow: 0px 1px 0px rgba(56, 56, 56, 0.3); */
       font-weight: 500;
-      background-color: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(5px);
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
 
-      .logo {
+      .Icon {
+        display: none;
+        color: ${$base_theme_color};
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      ${StyledLogo} {
         display: flex;
         justify-content: center;
         align-items: center;
-        .logo-img {
-          width: 50px;
-          height: 50px;
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-position: center;
-          margin-right: 5px;
-        }
         a {
-          font-size: 30px;
+          font-size: 24px;
           font-weight: bold;
-          color: #000;
+          color: ${$color_key_color};
           text-decoration: none;
         }
       }
 
-      .nav {
-        position: relative;
-        line-height: ${$header_desktop_line_height};
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-        .nav-menuBar {
-          cursor: pointer;
-          color: ${$color_base_black};
-          border: none;
-          font-size: 25px;
-          line-height: ${$header_desktop_line_height};
-          padding: 0;
-          background-color: transparent;
-        }
-
-        .navTab {
-          line-height: initial;
-          position: fixed;
-          width: 100%;
-          height: 100vh;
-          top: 0;
-          transform-origin: center;
-          transform: translateX(-300%);
-          left: 50%;
-          will-change: opacity, transform;
-          /* transition: all 0.5s ease-in-out; */
-          .navTab-container {
-            position: fixed;
-            z-index: 100;
-            background-color: #fff;
-
-            transform-origin: center;
-            transform: translateX(100%);
-            right: 0;
-
-            width: 30%;
-            height: 100vh;
-            text-align: right;
-            padding: 2% 0;
-            box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.07);
-
-            will-change: opacity, transform;
-            transition: all 0.4s ease-in-out;
-            .navTab-user {
-              padding: 0 5% 5%;
-              border-bottom: 1px solid ${$color_base_line};
-              .user-login {
-                text-decoration: none;
-                line-height: initial;
-                display: inline-block;
-                width: auto;
-                font-size: 30px;
-                font-weight: bold;
-                color: ${$color_base_black};
-                transition: all 0.3s ease;
-                &::after {
-                  position: relative;
-                  content: '';
-                  display: block;
-                  transform: scaleX(0%);
-                  height: 3px;
-                  background-color: ${$color_base_black};
-                  top: -5px;
-                  will-change: transform;
-                  transition: all 0.3s;
-                }
-
-                &:hover {
-                  &::after {
-                    /* transform: scaleX(100%); */
-                  }
-                }
-              }
-              .user-profile {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                .profile_left {
-                  display: flex;
-                  align-items: center;
-                  span {
-                    cursor: default;
-                    margin: 0 10px;
-                    font-weight: 500;
-                    font-size: 20px;
-                  }
-                  .profile-img {
-                    display: block;
-                    width: 50px;
-                    height: 50px;
-                    background-color: ${$color_base_black};
-                    border-radius: 100%;
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: cover;
-                  }
-                }
-                .user-logout {
-                  position: relative;
-                  top: 2px;
-                  display: block;
-                  cursor: pointer;
-                  color: ${$color_base_black};
-                  display: block;
-                  width: fit-content;
-                  font-size: 20px;
-                  font-weight: 500;
-                  background-color: transparent;
-                  border: none;
-                  will-change: opacity, transform;
-                  transition: all 0.3s ease;
-                  &::after {
-                    // position: relative;
-                    content: '';
-                    display: block;
-                    transform: scaleX(0%);
-                    height: 2px;
-                    background-color: ${$color_base_black};
-                    top: 0px;
-                    will-change: transform;
-                    transition: all 0.3s;
-                  }
-
-                  &:hover {
-                    &::after {
-                      transform: scaleX(100%);
-                    }
-                  }
-                }
-              }
-              .user-more {
-                line-height: initial;
-                font-size: 14px;
-                color: rgb(90, 90, 90);
-                margin: 0;
-                a {
-                  text-decoration: underline;
-                  color: ${$color_key_color};
-                }
-              }
-            }
-            .navTab-link {
-              margin: 0;
-              padding: 0;
-              a {
-                text-align: left;
-                text-decoration: none;
-                display: block;
-                padding: 0 5%;
-                line-height: 55px;
-                font-size: 20px;
-                font-weight: 500;
-                color: ${$color_base_black};
-                border-bottom: 1px solid ${$color_base_line};
-                will-change: padding;
-                transition: all 0.3s;
-                &:hover {
-                  background-color: ${$color_base_black};
-                  color: #fff;
-                  padding: 0 10%;
-                }
-              }
-            }
-          }
-          .navTab-bg {
-            cursor: pointer;
-            overflow: hidden;
-            position: fixed;
-            top: 0;
-
-            transform-origin: center;
-            transform: translateX(-100%);
-            left: 0;
-
-            width: 70%;
-            height: 100vh;
-            background-color: ${$color_base_line};
-            will-change: opacity, transform;
-            transition: all 0.4s ease-in-out;
-          }
-        }
-      }
-
-      @media screen and (max-width: 1000px) {
+      @media screen and (max-width: ${$tablet_max_width}) {
         height: ${$header_mobile_line_height};
+        /* top: 14px; */
+        width: 100%;
         padding: 0 5%;
 
-        .logo {
-          .logo-img {
-            margin-right: 5px;
-          }
-          a {
-            font-size: 20px;
-          }
+        .Icon {
+          display: block;
         }
 
-        .nav {
-          line-height: ${$header_mobile_line_height};
-          .nav-menuBar {
-            line-height: ${$header_mobile_line_height};
-          }
-
-          .navTab {
-            .navTab-container {
-              width: 80%;
-              height: 100vh;
-              padding: 5% 0;
-              .navTab-user {
-                padding: 0 5% 5%;
-                .user-login {
-                  font-size: 30px;
-                }
-                .user-profile {
-                  .profile_left {
-                    span {
-                      margin: 0 10px;
-                      font-size: 16px;
-                    }
-                    .profile-img {
-                      width: 35px;
-                      height: 35px;
-                    }
-                  }
-                  .user-logout {
-                    font-size: 16px;
-                  }
-                }
-                .user-more {
-                  font-size: 12px;
-                }
-              }
-              .navTab-link {
-                a {
-                  font-size: 16px;
-                }
-              }
-            }
-            .navTab-bg {
-              width: 20%;
-            }
+        ${StyledLogo} {
+          a {
+            font-size: 20px;
           }
         }
       }

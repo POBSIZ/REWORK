@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { GlobalStyleType } from 'StyleVars';
 
-import { BadgeParamsType } from '.';
+import { BadgePropsType } from '.';
 
-const StyledBadge = styled.span.attrs((props) => ({}))<BadgeParamsType>`
+const StyledBadge = styled.span.attrs((props) => ({}))<BadgePropsType>`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
 

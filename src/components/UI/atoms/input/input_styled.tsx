@@ -11,11 +11,14 @@ const StyledInput = styled.input.attrs((props) => ({
 }))<InputPropsType>`
   ${(props) => {
     const Theme: GlobalStyleType = props.theme;
-    const $color_disabled = Theme.palette.$color_disabled;
-    const $color_key_color = Theme.palette.$color_key_color;
+    const $color_base_white = Theme.palette.$color_base_white;
     const $color_base_black = Theme.palette.$color_base_black;
     const $color_base_line = Theme.palette.$color_base_line;
-    const bgColor = props.disabled === true ? $color_base_line : 'transparent';
+    const $color_disabled = Theme.palette.$color_disabled;
+    const $color_key_color = Theme.palette.$color_key_color;
+    // const bgColor = props.disabled === true ? $color_base_line : 'transparent';
+    const bgColor =
+      props.disabled === true ? $color_base_line : $color_base_white;
     const borderColor =
       props.isFail === true ? Theme.palette.$color_failure : $color_base_line;
     return css`
